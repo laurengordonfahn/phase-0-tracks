@@ -3,7 +3,7 @@
 }
 
 body {
-	
+
 	font-family: Arial;
 	font-size: 15px;
 	background-color: purple;
@@ -17,25 +17,40 @@ body {
 	font-style: italic;
 }
 
-#main{
+#left{
+
+	width: 400px;
+	height: 123px;
 	float: left;
-	width: 65%;
-	overflow: hidden;
-	
-	
 
 }
-/*
+
 #wrapper {
-	width: 1005px;
-	margin:0 auto;
-	padding:0;
-	overflow: auto;
-*/
+	width: 960px;
+
+
 }
 
-nav {
+#right {
+	width: 400px;
+	height: 123px;
+	float: right;
 	
-	overflow: hidden;
-	
+}
+
+ul {
+	list-style-type: lower-roman;
+}
+
+.headings{ 
+	letter-spacing: 3px
+
+}
+
+.headings:hover {
+	color:red;
+}
+
+th {
+	font-variant: 
 }
