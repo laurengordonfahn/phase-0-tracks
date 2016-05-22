@@ -1,0 +1,41 @@
+#linktest {
+	color: red;
+}
+
+body {
+	
+	font-family: Arial;
+	font-size: 15px;
+	background-color: purple;
+}
+
+.special {
+	border: solid black 10px;
+	padding: 20%;
+	margin: 10%;
+	background-color: orange;
+	font-style: italic;
+}
+
+#main{
+	float: left;
+	width: 65%;
+	overflow: hidden;
+	
+	
+
+}
+/*
+#wrapper {
+	width: 1005px;
+	margin:0 auto;
+	padding:0;
+	overflow: auto;
+*/
+}
+
+nav {
+	
+	overflow: hidden;
+	
+}
