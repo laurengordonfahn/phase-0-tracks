@@ -52,5 +52,7 @@ ul {
 }
 
 th {
-	font-variant: 
+	text-decoration: underline;
 }
+.beige {background:beige;}
+.grey {background-color: grey;}
