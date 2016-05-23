@@ -1,0 +1,63 @@
+psudocode for getting in an elevator for a robot 4.1 release 0
+
+puts ("Hello, Robot!")
+puts ("What floor of the building are you on?")
+present_floor = gets. chomp
+	- Answers can be in integers or L, B, B(integer)
+	- use Translator (below) for letters
+	- any other response should enter
+		If you have any other letters then see bottom of instructions for how to figure out what to do!
+
+Translator for lettered floors:
+L= = Lobby  Should be interpreted 0
+B= = Basement Should be interpreted -1
+B(number)= A floor below ground and should be interpreted (- (absolute value of the number))
+If transloator used then present_floor = translator_answer_present_floor
+
+puts ( "Do you know what floor you want to go to, Robot?")
+desired_floor_known= gets.chomp
+
+	- Answers can be "yes" or "no"
+	
+	If Yes: desired_floor_number= gets.chomp 
+	Answer is an integer
+
+Translator for lettered floors:
+L= = Lobby  Should be interpreted 0
+B= = Basement Should be interpreted -1
+B(number)= A floor below ground and should be interpreted (- (absolute value of the number))
+If transloator used then desired_floor_number =translator_answer_desired_floor
+
+	If No:
+
+	puts ("what business do you want to go to in this building?")
+	desired_business_name = gets. chomp
+	puts ("us the search program to look at the building business 	
+		director and find the name of the business then find the floor of that business")
+
+	Repeat this section of code until the answer is yes
+
+puts ("Lets calculate if the floor you want to go to is above or below the floor we are on?")
+
+Calculate: 
+	present_floor - desired_floor_number = up_or_down_desired
+	This Answr can be any integer
+	
+
+if it is a letter that is not designated above see below.
+	-equal to the number you want to go to- then don't get on the elevator you have arrived at the correct floor! End program
+	- less then the number want to go to. 
+	Then press the elevator up button which may be posted as an upward arrow or the word up or it is the button on the top of two stacked buttons, if there is only one button press that
+	- more then the number you want to go to.
+	Then press the elevator down button which is the down arrow, the word down, or the bottom button of a stacked set of two. If there is only one button press that
+If less or more then the floor you are presently on.
+	- Find elevator, if more thenone elevator make sure the elevator call buttons you seek out are for the floors you want sometimes there are elevators that only go to certain floors and stand out side of elevator
+	-press appropriate button as instructed above
+Wait for doors to open, if more then one elvator is available make sure when the evleator opens that its desination arrow is pointing in the direction you requested, only get on elevators with the arrow going in the direction you requested, otherwise press the button again and wait for the elevator going your way.
+
+Inside elevator stand in front of numbered buttons. And press the floor number you want to go to. The doors will then close in a certain amount of time and bring you to your floor. before exciting make sure that the floor you are extiting to is correct, elevators can stop on any floor but will eventually get to your floor.
+
+If you have a letter that is not B, L, or B (number) what to do?
+	- Find an elevator that is not marked service only, and press either button up or down. Get into the elevator when called and find the button of the floor you want to go to and press it. This ride may take a while as you may be going up before going down. If the elevator stops moving at any time press your floor request again and the elevator should take you there!
+
+
