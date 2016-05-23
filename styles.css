@@ -17,26 +17,45 @@ body {
 	font-style: italic;
 }
 
-#left{
-
+/*#left{
+	
 	width: 400px;
 	height: 123px;
 	float: left;
+}
+*/
+
+
+main {
+	/*width: 960px;*/
+	display:block;
+	margin: 0 auto; 
+	/* this is the code for center the element
+	clockwise top, right, bottom, left*/
+
+}
+#left{ 
+	display:inline-block;
+	width:400px;
 
 }
 
-#wrapper {
-	width: 960px;
-
+#right{
+	display:inline-block;
+	width:400px;
+	vertical-align: top;
+	
 
 }
 
-#right {
+
+
+/*#right {
 	width: 400px;
 	height: 123px;
 	float: right;
 	
-}
+}*/
 
 ul {
 	list-style-type: lower-roman;
