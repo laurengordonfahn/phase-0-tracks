@@ -1,0 +1,174 @@
+psudocode for getting in an elevator for a robot 4.1 release 0
+
+puts ("Hello, Robot!")
+puts ("What floor of the building are you on?")
+present_floor = gets. chomp
+	- Answers can be in integers or L, B, B(integer)
+	- use Translator (below) for letters
+	- any other response should enter
+		If you have any other letters then see bottom of instructions for how to figure out what to do!
+
+Translator for lettered floors:
+L= = Lobby  Should be interpreted 0
+B= = Basement Should be interpreted -1
+B(number)= A floor below ground and should be interpreted (- (absolute value of the number))
+If transloator used then present_floor = translator_answer_present_floor
+
+puts ( "Do you know what floor you want to go to, Robot?")
+desired_floor_known= gets.chomp
+
+	- Answers can be "yes" or "no"
+	
+	If Yes: desired_floor_number= gets.chomp 
+	Answer is an integer
+
+Translator for lettered floors:
+L= = Lobby  Should be interpreted 0
+B= = Basement Should be interpreted -1
+B(number)= A floor below ground and should be interpreted (- (absolute value of the number))
+If any other response should be entered
+		puts ( "If you have any other letters, then see bottom of instructions for how to figure out what to do!")
+If transloator used then desired_floor_number =translator_answer_desired_floor
+
+
+	If No:
+
+	puts ("what business do you want to go to in this building?")
+	desired_business_name = gets. chomp
+	puts ("us the search program to look at the building business 	
+		director and find the name of the business then find the floor of that business")
+
+	Repeat this section of code until the answer is yes
+
+puts ("Lets calculate if the floor you want to go to is above or below the floor you are on presently?")
+
+Calculate: 
+	(present_floor) - absolute value of (desired_floor_number) = elevator_direction
+	This Answr can be any integer
+	
+	Answer 0 - puts ("Don't get on the elevator! You have arrived at the correct floor!" 
+		End program
+
+	If Answer < or > 0 then 
+	- Find elevator, 
+	- Is there more then one elevator?
+	- If no continue to Section A
+	- If yes
+		When there is more then one elavator 
+		- Make sure to not use maintance or service only elevators
+		- Notice if the different elevators are desingated for certain sets of floors or if it is undesignated. 
+		- Undesignated elevators continue to Section A
+		- Elevators for specific sets of floors Instructions:
+			- Use desired_floor answer this answer must be inside of the number set designated by the elevator. Stand in front of and push the buttons only for the elevator that services your floor. Make sure the elevator that you get on to was for that set of numbers. Different elevators may open but will not go to/ service the area you are going to. 
+
+Section A
+
+	Answer < 0 puts (" Then you want to go direction="up". 
+		Instructions to go up:
+		Press the elevator up button which may be posted as... 
+			- an upward facing arrow 
+			- the word "up", or 
+			- it is the button on the top of two stacked buttons
+			- if there is only one button press that button ")
+	
+	Answer > 0 puts (" Then you want to go direction= "down".
+		Instructions to go down:
+		Press the elevator down button which may be posted as ...
+			- a downward facing arrow 
+			- the word "down", or 
+			- the bottom button of two stacked buttons 
+			-if there is only one button press that button")
+
+-press appropriate button as instructed above
+Wait for doors to open, if more then one elvator opens and comes available make sure when the evleator opens that its desination arrow is pointing in the direction you requested either up or down, only get on elevators with the arrow going in the direction you requested, 
+
+-If you miss your elevator or did not notice it come and go repeate Section A press the button again and wait for the elevator going your way.
+
+
+Inside elevator:
+- stand in front of numbered buttons. 
+- And press the floor number you want to go to desired_floor. 
+- The doors will then close in a certain amount of time and bring you to your floor. 
+-Before exciting when the doors open make sure that the floor you are extiting to is correct 
+To exit floor_exiting = = desired_floor, 
+-elevators can stop on any floor but will eventually get to your floor.
+
+If you have a letter that is not B, L, or B(number) what to do?
+	- Find an elevator that is not marked service only, and press any button to call the elevator. 
+	-Get into the elevator and find the button of the floor you want to go to and press it. 
+	-This ride may take a while as you may be going up before going down or vis versa.
+	- If the elevator stops moving at any time press your floor request again and the elevator should take you to desired_floor!
+
+
+
+Making a Bowl of Cereal In the Morning:
+
+Go into kitchen
+
+Getting A bowl:
+
+Open Cabinet with Bowls
+Take one bowl out of Cabinet
+Place bowl on counter
+Close Cabinet door
+
+Getting a Spoon:
+
+open draw with spoons
+take one teaspoon out of draw
+place teaspoon on counter next to bowl
+close draw
+
+Getting Ceral:
+Open cabinet with partiall/full ceral boxs
+pull out desired ceral box
+Keep box in hand
+Close cabinet with free hand
+
+Pouring Ceral into bowl:
+
+open carbord top tab of ceral box
+unfurl plastic wrapper containing ceral
+open the mouth of the plastic wrapper contianing the ceral
+tip box at no more then 50 degree angle over bowl opening with opening 		of plastic wrap facing down toward the bowl
+allow ceral to pour into bowl
+allow ceral to fill the bowl 6/8ths of the way or less if desired
+once bowl is 1/8 away from as full as you want start to decrease angle 
+	of box to bowl and start to bring the box to upright position so no more ceral pours out. We only want ceral in the bowl not on the counter
+
+Closing ceral box:
+Place the ceral box on the counter right side up.
+refurl plastic wrapper
+re connect carboard top tabs so box is closed again- this rarely works 		well
+open cupboard where ceral is stored.
+Place ceral box back in cupboard
+close cupbard door.
+
+Get Milk:
+open fridge.
+Pull out the carton of milk.
+With free hand close fridge door.
+Put milk on counter.
+
+Pour Milk into Bowl: 
+Take top of of milk or open carboard tab.
+tip box at no more then 50 degree angle over bowl opening with opening 		facing down toward the bowl
+allow milk to pour into bowl
+allow milk to fill the bowl to desired amount, no more then 6/8th of 	the bowel should be filled with milk/cerel combinaiton.
+once bowl is 1/8 away from as full as you want start to decrease angle 
+	of box to bowl and start to bring the box to upright position so no more milk pours out. We only want everthing to stay in the bowl not on the counter.
+
+Close up Milk:
+Close milk container.
+Opne fridge.
+Put milk into fridge.
+Close fridge door.
+
+Eating Ceral:
+Take spoon from counter in one hand and take bowl of ceral/milk combo in other. And EAT!
+
+
+
+
+
+

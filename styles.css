@@ -1,0 +1,58 @@
+#linktest {
+	color: red;
+}
+
+body {
+
+	font-family: Arial;
+	font-size: 15px;
+	background-color: purple;
+}
+
+.special {
+	border: solid black 10px;
+	padding: 20%;
+	margin: 10%;
+	background-color: orange;
+	font-style: italic;
+}
+
+#left{
+
+	width: 400px;
+	height: 123px;
+	float: left;
+
+}
+
+#wrapper {
+	width: 960px;
+
+
+}
+
+#right {
+	width: 400px;
+	height: 123px;
+	float: right;
+	
+}
+
+ul {
+	list-style-type: lower-roman;
+}
+
+.headings{ 
+	letter-spacing: 3px
+
+}
+
+.headings:hover {
+	color:red;
+}
+
+th {
+	text-decoration: underline;
+}
+.beige {background:beige;}
+.grey {background-color: grey;}
