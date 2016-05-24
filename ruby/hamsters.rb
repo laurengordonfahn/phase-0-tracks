@@ -16,7 +16,7 @@ est_age = gets.chomp
 
 
 def estimated_age(est_age)
-	if est_age = " "
+	if est_age ==" "
 		est_age = "nil"
 	else est_age = est_age 
 end
