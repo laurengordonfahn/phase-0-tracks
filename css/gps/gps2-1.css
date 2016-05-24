@@ -1,1 +1,56 @@
-body {background-color: red}
+header{
+ /*  border: 10px solid black;  */
+  padding: 5%;
+  background-color: purple;
+  color: white;
+  width: 100%;
+   box-sizing: border-box;
+}
+
+body{
+  font-family: Arial;
+  width: 100%;
+ 
+  
+  
+}
+.column-1 {
+    float: left;
+   
+    width: 50%;
+    vertical-align: top;
+    background-color: yellow;
+    box-sizing: border-box;
+    margin:0 auto;
+    height: 1000px;
+   /*  margin: 0;
+    padding:0; */
+   
+    
+  
+}
+
+.column-2{
+  float: left;
+ 
+  width: 50%;
+  vertical-align: top;
+ background-color: red;
+ box-sizing: border-box;
+ margin-right: -1px;
+ height: 1000px;
+/*  margin: 0;
+ padding-bottom: 20px; */
+ 
+ 
+  
+}
+
+footer {
+  float: left;
+  
+  border: solid black; 
+  padding: 1%;
+  width: 100%;
+   box-sizing: border-box;
+}
