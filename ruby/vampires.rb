@@ -3,12 +3,7 @@ def didnt_lie_about_age(age, birth_year)
 	return (2016 - birth_year) == age
 
 
-	# if (2016 - birth_year) == age
-	# 	is_it_ok = true
-	# elsif (2016 - birth_year) != age
-	# 	is_it_ok = false
-	# end
-	# return is_it_ok
+	
 end
 
 def age_check(age, birth_year)
