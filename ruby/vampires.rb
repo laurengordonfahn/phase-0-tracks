@@ -1,10 +1,14 @@
 def didnt_lie_about_age(age, birth_year)
-	if (2016 - birth_year) == age
-		is_it_ok = true
-	elsif (2016 - birth_year) != age
-		is_it_ok = false
-	end
-	return is_it_ok
+
+	return (2016 - birth_year) == age
+
+
+	# if (2016 - birth_year) == age
+	# 	is_it_ok = true
+	# elsif (2016 - birth_year) != age
+	# 	is_it_ok = false
+	# end
+	# return is_it_ok
 end
 
 def age_check(age, birth_year)
@@ -40,21 +44,6 @@ until number_processed == number_to_process
 	end
 
 
-	#puts "#{age_check(age, birth_year)}"
-
-
-	# if ((name == "Drake Cula") || (name == "Tu Fang"))
-	# 	puts "Almost certainly a vampire."
-	# elsif age_check(age, birth_year) && ((garlic_bread_order == "yes") || (insurance == "yes"))
-	# 	puts "Probably not a Vampire!"
-	# elsif !age_check(age,birth_year) && (garlic_bread_order == "no" && insurance == "no")
-	# 	puts "Almost certainly a vampire."
-	# elsif !age_check(age,birth_year) && (garlic_bread_order == "no" || insurance == "no")
-	# 	puts "Probably a vampire"
-	# else
-	# 	puts "Results inconclusive."
-	# end
-
 	if allergies == "sunshine"
 		vampire_status = "Probably a vampire"
 	else
@@ -69,6 +58,9 @@ until number_processed == number_to_process
 		if !age_check(age,birth_year) && (garlic_bread_order == "no" && insurance == "no")
 			vampire_status = "Almost certainly a vampire."
 		end
+		if ((name == "Drake Cula") || (name == "Tu Fang"))
+			vampire_status = " Definitely a vampire."
+		end
 	end
 
 	puts(vampire_status)
@@ -76,6 +68,7 @@ until number_processed == number_to_process
 	number_processed += 1
 end
 
+puts "Actually never mind! What do these quetions have to do with anything? Lets' all be friends."
 
 
 
