@@ -10,17 +10,23 @@
 # "zom".<???>
 # => “zoom”
 
-# "enhance".<???>
+# "enhance".<center (width, padstr="")>
 # => "    enhance    "
 
 # "Stop! You’re under arrest!".<???>
 # => "STOP! YOU’RE UNDER ARREST!"
 
-# "the usual".<???>
+# "the usual".<insert (8, "suspects">
 #=> "the usual suspects"
 
-# " suspects".<???>
+
+
+# "suspects".<insert (0, "the usual "> 
 # => "the usual suspects"
+
+# option 2
+# "suspects". <prepend ("the usual")>
+
 
 # "The case of the disappearing last letter".<???>
 # => "The case of the disappearing last lette"
@@ -31,9 +37,11 @@
 # "Elementary,    my   dear        Watson!".<???>
 # => "Elementary, my dear Watson!"
 
-# "z".<???>
+# "z".<ord>
 # => 122 
 # (What is the significance of the number 122 in relation to the character z?)
+# this is the ASCII printable character for the lower case z. 
 
-# "How many times does the letter 'a' appear in this string?".<???>
+# "How many times does the letter 'a' appear in this string?".<.index ("a")>
+
 # => 4
