@@ -23,36 +23,41 @@ puts "Client Decor Theme:"
 client_name[:decore_theme] = gets.chomp.to_s
 
 puts "Do you like Grey? (true or false):"
-client_name[:likes_grey] = gets.chomp
-	
-	if client_name[:likes_grey] == "Yes"
-		client_name[:likes_grey] =  true
-	elsif client_name[:likes_grey] == "No"
-		client_name[:likes_grey] = false
-	 elsif client_name[:likes_grey] == true
- 		client_name[:likes_grey] = true
-	elsif client_name[:likes_grey] == false
-  		client_name[:likes_grey] = false
-  	#### SOMETHING IS WRONG HERE
-	else puts "Please, answer using true or false, do you like grey?"
+client_name[:likes_grey] = gets.chomp.to_s
+	until client_name[:likes_grey] == ("true" || "false")
+		if client_name[:likes_grey] == "Yes"
+			client_name[:likes_grey] =  true
+		elsif client_name[:likes_grey] == "No"
+			client_name[:likes_grey] = false
+		else puts "Please, answer using true or false, do you like grey?"
+			client_name[:likes_grey] = gets.chomp
+		end	
 	end
 
 #next line is a test to see if it added the input and will be noted out but shows it was used to test line 25-32
 #p client_name
 
  puts "Do you like Brown? (true or false):"
- client_name[:likes_brown] = gets.chomp
+ 
+ 	validated = false
  	
-	if client_name[:likes_brown] == "Yes"
-		client_name[:likes_brown] =  true
-	elsif client_name[:likes_brown] == "No"
-		client_name[:likes_brown] = false
-	elsif client_name[:likes_brown] == true
- 		client_name[:likes_brown] = true
- 	elsif client_name[:likes_brown] == false
- 		client_name[:likes_brown] = false
-	####SOMETHING WRONG HERE####
-	else puts "Please, answer using true or false, do you like brown?"
+ 	until validated == true
+ 		client_name[:likes_brown] = gets.chomp.to_s
+		if client_name[:likes_brown] == "Yes"
+			client_name[:likes_brown] =  true
+			validated = true
+		elsif client_name[:likes_brown] == "No"
+			client_name[:likes_brown] = false
+			validated = true
+		elsif client_name[:likes_brown] == "true"
+			client_name[:likes_brown] = true
+			validated = true
+		elsif client_name[:likes_brown] == "false"
+			client_name[:likes_brown] = false
+			validated = true
+		else 
+			puts "Please, answer using true or false, do you like brown?"
+		end
 	end
 
  puts "What is your Budget for this Project?:"
@@ -78,24 +83,23 @@ puts "What is your street address?:"
 #print the hash with key and values present for user to view
 p client_name
 
-#propmpt the user to update any keys one time, "none" will skip this step but if a key is called the program should allow for update, note: use stringmethod to convert a string to a symbol
-puts "View the above data, if you would like to update a catagory please type in the catagory you want to edit,
-		If you want to leave this file as is type, 'none' to save and end."
+#propmpt the user to update any keys one time, "none" will skip this step but if a key is called the program should allow for update, 
+#note: use stringmethod to convert a string to a symbol
+puts "View the above data, if you would like to update a catagory please type in the catagory you want to edit.
+	If you want to leave this file as is type, 'none', to save and end."
 
-update = gets.chomp
 
-def update_method(update)
-	if  update == "none"
-		p client_name
-	else update == " "
-		client_name[:update]
-		puts "Please, type the updated information for catagory #{update}"
-	
+finished = false
+
+until finished == true
+
+	key_to_update = gets.chomp
+	if  key_to_update == "none"
+		finished = true
+	else
+		puts "Please, type the updated information for catagory #{key_to_update}"
 		new_value = gets.chomp
-	
-		if new_value == " "
-			client_name[:update] = new_value
-		end
+		client_name[key_to_update.to_sym] = new_value
 	end
 end
 
