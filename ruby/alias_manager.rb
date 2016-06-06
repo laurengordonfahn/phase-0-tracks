@@ -1,44 +1,36 @@
 # # take "Felicia Torres"
 
-# # 1) Goal: Swap the first and last name 
-puts "Type the full name to be spy-a-fied"
-name_to_be_altered = gets.chomp
-
-def name_changer1(name_to_be_altered)
-	# 	1) Breaking it into a word array
+#PART 1) The following switches the first and last name
+def name_swap(name_to_be_altered)
+	#STEP 	1) Breaking it into a word array
 
 	name_arrayed = name_to_be_altered.split(' ')
 	p name_arrayed
-	# 	2) Doing a method that switches the first and second elements in the array
+	# STEP	2) Doing a method that switches the first and second elements in the array
 	p name_arrayed.insert(0, name_arrayed.delete_at(1))
 end
 
 
-names_switched = name_changer1(name_to_be_altered)
-p "This is the product of the first step #{names_switched}."
+#PART 2) Goal: Change vowels to the next vowel "aeiou"
 
-# # 2) Goal: Change vowels to the next vowel "aeiou"
-# 		# 1) A method that breaks the name into each letter, array to a string to an array of letters
+
+#STEP 1) A method that breaks the name into each letter, array to a string to an array of letters
 def name_slicer(names_switched)
-	p stringed_switched_name = names_switched.join(' ')
-	p stringed_switched_name.split("")
+	stringed_switched_name = names_switched.join(' ')
+	stringed_switched_name.split("")
 end
 
-name_split = name_slicer(names_switched)
-p "This is the product of the first step of step 2 #{name_split}"
 
-
-		# 2) A method that identifies "aeiou" 
-	#use index to call a letter in the string and then make a while statment
-# call_a_letter(name_split)
+#STEP 2) A method that identifies "aeiou" 
+	
 		# 3) A method that then converts each identifed vowel and maps 
 		# 	it to the next in an array of "aeiou"
 
-def call_a_vowel(index)
+def call_a_vowel(array_split_name)
 	index = 0
-	while index < name_slicer(names_switched).length
+	while index < array_split_name.length
 
-	letter = name_split.fetch(index)
+	letter = array_split_name.fetch(index)
 
 		if letter == "a"
 			letter = "e"
@@ -53,18 +45,17 @@ def call_a_vowel(index)
 		end
 	index += 1
 	end
-p call_a_vowel(name_slicer(names_switched))
 end
-call_a_vowel(name_slicer(names_switched))
 
-# 3B) Goal: Change all consonants to the next consonent in the alphabet
+
+#STEP 3) Goal: Change all consonants to the next consonent in the alphabet
 	 # - This requires
 	 # 	1) A method that maps to a string of consents that does not include vowels
 
-def call_a_consonent(index)
+def call_a_consonent(array_split_name)
 	index = 0
 
-	letter = name_split.fetch(index)
+	letter = array_split_name.fetch(index)
 
 		if letter == "z"
 			letter = "b"
@@ -81,6 +72,17 @@ def call_a_consonent(index)
 
 	index += 1
 end
-p call_a_consonent()
+
+
+def converted_name(scrabled_name)
+	name_at_this_step = scrabled_name.downcase
+	name_at_this step = name_swap(name_at_this_step)
+	name_at_this_step = name_slicer(name_at_this_step)
+	name_at_this_step = call_a_vowel(name_at_this_step)
+	name_at_this_step = call_a_consonent(name_at_this_step)
+	return name_at_this_step
+end
+
+p converted_name("Felica Torres")
 
 
