@@ -5,9 +5,8 @@ def name_swap(name_to_be_altered)
 	#STEP 	1) Breaking it into a word array
 
 	name_arrayed = name_to_be_altered.split(' ')
-	p name_arrayed
 	# STEP	2) Doing a method that switches the first and second elements in the array
-	p name_arrayed.insert(0, name_arrayed.delete_at(1))
+	name_arrayed.insert(0, name_arrayed.delete_at(1))
 end
 
 
@@ -20,7 +19,6 @@ def name_slicer(names_switched)
 	stringed_switched_name.split("")
 end
 
-
 #STEP 2) A method that identifies "aeiou" 
 	
 		# 3) A method that then converts each identifed vowel and maps 
@@ -28,9 +26,10 @@ end
 
 def call_a_vowel(array_split_name)
 	index = 0
+	new_array = []
 	while index < array_split_name.length
 
-	letter = array_split_name.fetch(index)
+		letter = array_split_name.fetch(index)
 
 		if letter == "a"
 			letter = "e"
@@ -43,8 +42,13 @@ def call_a_vowel(array_split_name)
 		elsif letter == "u"
 			letter = "a"
 		end
-	index += 1
+
+		new_array.push(letter)
+		index += 1
 	end
+	return new_array
+
+
 end
 
 
@@ -54,8 +58,10 @@ end
 
 def call_a_consonent(array_split_name)
 	index = 0
+	new_array =[]
 
-	letter = array_split_name.fetch(index)
+	while index < array_split_name.length
+		letter = array_split_name.fetch(index)
 
 		if letter == "z"
 			letter = "b"
@@ -67,20 +73,29 @@ def call_a_consonent(array_split_name)
 			letter = "p"
 		elsif letter == "t"
 			letter = "v"
-		else letter = letter.next
+		elsif letter != " "
+			letter = letter.next
 		end
 
-	index += 1
+		index += 1
+		new_array.push(letter)
+	end
+
+	return new_array
 end
 
 
 def converted_name(scrabled_name)
 	name_at_this_step = scrabled_name.downcase
-	name_at_this step = name_swap(name_at_this_step)
+	p name_at_this_step
+	name_at_this_step = name_swap(name_at_this_step)
+	p name_at_this_step
 	name_at_this_step = name_slicer(name_at_this_step)
+	p name_at_this_step
 	name_at_this_step = call_a_vowel(name_at_this_step)
+	p name_at_this_step
 	name_at_this_step = call_a_consonent(name_at_this_step)
-	return name_at_this_step
+	return name_at_this_step.join('')
 end
 
 p converted_name("Felica Torres")
