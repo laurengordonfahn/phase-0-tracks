@@ -74,8 +74,9 @@
 
 
 class Kittens
-	def initialize
+	def initialize (name)
 		p "Intiializing a new kitten"
+		@name = name
 	end
 
 	def meow(num)
@@ -83,24 +84,27 @@ class Kittens
 	end
 
 	def sharpen_nails(furniture, num)
-		p "kitten sharpens nails on #{furniture} for #{num.to_i} seconds."
+		p "#{@name} sharpens nails on #{furniture} for #{num.to_i} seconds."
 	end
 
 end
 
-kitten1 = Kittens.new
+kitten1 = Kittens.new("Billy-Bob")
 kitten1.meow(7)
 kitten1.sharpen_nails("couch", 10)
 
 
 kitten_collection = [ ]
 	index = 0
+	counter = 0
 	until kitten_collection.size > 49
-		 kitten = Kittens.new
+		index = counter
+		index = Kittens.new("kitten#{index}")
 		 
-		kitten_collection << kitten
+		kitten_collection << index
 
-		index +=1
+
+		counter +=1
 	end
 p kitten_collection
 
