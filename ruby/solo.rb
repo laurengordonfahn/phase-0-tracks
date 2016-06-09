@@ -58,5 +58,63 @@ p lot1.number_in_warehouse= 20
 p lot1
 lot2.deciple_checker("banned saw")
 
-def user_interface()
-	puts "This is a program to help you "
+
+def order_form
+	puts "The name for this order?"
+	@box_name = gets.chomp.to_s
+	box_name = [ ]
+	puts "What material would you like your earplugs?"
+	material = gets.chomp.to_s
+	puts "What deciple level would you like your earplugs to protect against?"
+	deciple_level = gets.chomp.to_i 
+	puts "What color would you like your earplugs to be?"
+	color = gets.chomp.to_s
+	puts " What number of ear plugs would you like (multiple of twos make sense)?"
+	number_in_warehouse = gets.chomp.to_i
+	age = 0
+	box_name << initialize(material, deciple_level, color, number_in_warehouse, age)
+end
+		
+def order_form_repeat_request
+	puts"Would you like to make another box of earplugs? (Yes or No)"
+	call_for_new_earplug_order = gets.chomp_to.s do |request_input|
+		if call_for_new_earplug_order == "Yes" || "yes"
+			@your_full_order = [ ]
+			@your_full_order << order_form
+		elsif call_for_new_earplug_order == "No" || "no"
+			puts "You have decided to no make any more ear plugs
+			  this is what you have orderded so far#{****}"
+		end
+end
+
+
+def user_interface
+	puts "This is a program to help you order ear plugs"
+	puts "Would you like to create a box of ear plugs? (Yes or No)"
+	call_for_new_earplug_order = gets.chomp_to.s do |request_input|
+		if call_for_new_earplug_order == "Yes" || "yes"
+			@your_full_order = [ ]
+			@your_full_order << order_form
+
+			order_form_repeat_request
+
+		elsif call_for_new_earplug_order == "No" || "no"
+			puts "You have decided to no make any more ear plugs
+			  this is what you have orderded so far#{@your_full_order}"
+	  	end
+	  end
+end
+
+p useer_interface
+
+
+
+
+
+
+
+
+
+
+
+
