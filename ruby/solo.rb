@@ -58,6 +58,14 @@ end
 # p lot1
 # lot2.deciple_checker("banned saw")
 
+class LineItem
+	attr_accessor :name
+	attr_accessor :ear_plug_type
+	def initialize(name,ear_plug_type)
+		@name = name
+		@ear_plug_type = ear_plug_type
+	end
+end
 
 def order_form
 	puts "whats the name of this order"
@@ -71,65 +79,37 @@ def order_form
 	puts " What number of ear plugs would you like (multiple of twos make sense)?"
 	number_in_warehouse = gets.chomp.to_i
 	age = 0
-	EarPlugTypes.new(material, deciple_level, color, number_in_warehouse, age)
+	ear_plug_type = EarPlugTypes.new(material, deciple_level, color, number_in_warehouse, age)
+
+	LineItem.new(box_name,ear_plug_type)
 end
-		
-# def order_form_repeat_request
-# 	puts"Would you like to make another box of earplugs? (Yes or No)"
-# 	call_for_new_earplug_order = gets.chomp.downcase
-# 		if call_for_new_earplug_order == "yes"
-# 			@your_full_order = [ ]
-# 			@your_full_order << order_form
-			
-# 			order_form_repeat_request
-# 		elsif call_for_new_earplug_order == "no"
-# 			puts "You have decided to no make any more ear plugs
-# 			  this is what you have orderded so far#{@your_full_order}"
-# 		else 
-# 			puts "Your request was not understood please type in 'yes' or 'no' if you would like to make another order of ear plugs."
-# 		end
-	
-# end
-
-
 
 def user_interface
 	puts "This is a program to help you order ear plugs"
+
+	your_full_order = []
+
 	puts "Would you like to create a box of ear plugs? (Yes or No)"
 	call_for_new_earplug_order = gets.chomp.downcase 
 	
+	until call_for_new_earplug_order == "no"
 
-		def box_name
-			@box_name = [ ]
+		if call_for_new_earplug_order == "yes" 
+			new_order = order_form
+
+			your_full_order << new_order
+
+
+			puts "Would you like to create a box of ear plugs? (Yes or No)"
+			call_for_new_earplug_order = gets.chomp.downcase 
+		else
+			puts "Your request was not understood please type in 'yes' or 'no' if you would like to make another order order or ear plugs."
+			call_for_new_earplug_order = gets.chomp.downcase 
 		end
+	end
 
-		if call_for_new_earplug_order == "no" 
-				return puts "You have decided to not make any more ear plugs
-			 	 this is what you have orderded so far#{@your_full_order}"
-		end
-	
-		until call_for_new_earplug_order == "no"
-			if call_for_new_earplug_order == "no" 
-				return puts "You have decided to not make any more ear plugs
-			 	 this is what you have orderded so far#{@your_full_order}"
-			
-			elsif call_for_new_earplug_order == "yes" 
-			
-			 		order_form
-					puts "Would you like to create a box of ear plugs? (Yes or No)"
-					call_for_new_earplug_order = gets.chomp.downcase 
-			else
-				puts "Your request was not understood please type in 'yes' or 'no' if you would like to make another order order or ear plugs."
-				call_for_new_earplug_order = gets.chomp.downcase 
+	puts "You have decided to not make any more ear plugs this is what you have orderded so far #{your_full_order}"
 
-
-
-			
-			end
-	  	end
-	  @box_name
-	  @box_name << order_form
-	  your_full_order << @box_name
 end
 
 p user_interface
