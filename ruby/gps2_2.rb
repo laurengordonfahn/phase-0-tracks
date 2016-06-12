@@ -11,7 +11,9 @@
 
 def food(var)
   groceryarr = var.split
-  groceryhash = {}
+  p groceryarr.class
+  
+  @@groceryhash = {}
 
   groceryarr.each do |fooditem|
     #hashfooditem = fooditem
@@ -22,6 +24,7 @@ def food(var)
 
   end
   puts groceryhash
+  p groceryarr.class
 
 end
 
@@ -33,6 +36,9 @@ food("carrots apples cereal pizza")
 # input: item name and optional quantity
 # steps:
 # output:
+def add_item(item_to_be_added)
+  food(item_to_be_added)
+
 
 # Method to remove an item from the list
 # input:
