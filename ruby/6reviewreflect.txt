@@ -1,0 +1,55 @@
+1) Classes are: Objects that inculde instructins for attributes(characteristics of this object type) and class methods (behaviors of this object type). There can be many instances of a class, aka indivuals that are intialized into this class, these are members of this class.
+
+
+Classes relationship to :
+class: The name granted when we set up a class will come up as the "class"
+	ie class Santas
+		end
+	would have a class of Santas
+
+state: is made up of the attributes granted a class in the intialize method 
+	created in the class it self. This gives the charcteristics of each unique instance of the class.
+
+behavior: are defined by the methods within the class 
+
+instance variable: start with an @ symbol, the scope is confined to the object
+	 that .self refers. Each unique instance of class can have different instance variables or they do not need to be declared. a 
+
+instance method: are called on an instance of a class and can not be called on on a class it self. You are usally trying to change or determine a particular attribute of a unique instance. 
+
+class methods are methods called on a class, therefore can be called on .self, 
+	not tied to a a single instance. 
+
+
+2) Attributes are: unique characteristics of an instance defined in the intialize 	def characteristics initialized in the .new this is called adding STATE 			of each instance, attributes are data for each instance it is unique to each 			instance
+
+3) 
+Real world example of an object: Serving Dishes are an object that could be designed into a class 
+
+class Serving_Dishes
+	attr_accessor :color, :decoration
+	attr_reader :shape, :diagonal_length
+	def initialize(color, decoration, shape, diagonal_length)
+		@color = color
+		@decoration = decoration
+		@shape = shape
+		@diagonal_length = diagonal_length
+	end
+end
+
+this class tells you that the instance variables (color, decoration, shape, diagonal_length) are attributes as they are in the intialize method and the @ symbol in front of them says they can be called on any where in this class to be accessed by other methods in this class. The attr_accessor says that color and decoration can be changed from outside the class, and attr_reader says that shape and diagonal length can only be seen not rewritten from outside the class. This class may represent serving dishes where the form the shape and the doagnoal length are set but the factory takes special orders that let the purchaser decorate the different shapes. 
+
+If I where to design a class to represent this object I would assign its attributes by:
+
+4)The purpose of the intialize method is to create a new instance of a class so the object can be created repeatively with different attributes. It is run using Class_name.new(any variables that are to be fed in)
+
+
+
+5) Modules are: a method or a series of related methods we want to repeate  but that are not a class because it isn’t creating a genre of objects, just a set of behaviors without attributes, so we don’t need copies so no need for .new
+	
+
+
+6) The different ways you can us a module are:
+	1) To compratmentalize a method so it doesn't get written over, it uses namespacing SomeModule.some_method where the distinction of a module stops the some_method from being altered inappropriately if its functionallity or its name is similar since it is used frequently for many different programs.
+
+	2) Modules can be written as mixings, which means they can be called upon in classes to give a class functionality.  Like a toolkit for any number of classes, it can be written seperatly and then called upon by in any number of classes. This is done by declaring the module above the classes you want to be able to use it and then adding the code words <inculde Module_name> to make the method/s usable to the class. 
