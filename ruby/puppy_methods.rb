@@ -114,9 +114,6 @@ kitten_collection.each do |kitten|
 
 	end
 
- 
-
-
 
 
 
