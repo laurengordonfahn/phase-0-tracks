@@ -5,7 +5,8 @@ body {
 
 #octopusdiv { max-width: 100%;
 	display: block;
-	
+	position: relative;
+
 	
 }
 
@@ -32,13 +33,51 @@ body {
   padding-top: 0px;
   padding-bottom: 100px;
   padding-right:30px;
-  padding-left: 90px;
+  padding-left: 90px;		
+}
+
+#octopus { 
+
+  margin-left: 400px;
+  margin-top: 200px;
+  width: 30%;
+  position: absolute;
+  z-index: -1;}
+
+ 
+#hatdiv{
+	
+	position: relative;
+}
+
+ #hat {
+  position: absolute;
+  padding-top: 85px;
+  
+  padding-left: 428px;
   margin: auto;
   width: 30%;
  
   z-index: 4;}
 
  }
+  #glassesdiv { 
+  	position:relative;
+  	z-index:3;
+
+
+
+  }
+
+ #glasses {
+ 	position: absolute;
+  padding-top: 370px;
+  padding-left: 470px;
+  margin: auto;
+  width: 20%;
+  
+  
+  z-index: 3;}
 
  
 
