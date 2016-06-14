@@ -47,7 +47,7 @@ reverse("Flip-Flop");
 var variable = 10
 
 for(var i = 1; i < variable; i++){
-	if ( i % 2.0 == 0){
+	if ( i % 2 == 0){
 		reverse("Flip-Flop");
 	}
 } 
