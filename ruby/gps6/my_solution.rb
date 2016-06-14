@@ -136,4 +136,9 @@ end
 
 #=======================================================================
 # Reflection Section
-
+# state_data's two different hashes are because the symboles can't be changed they can only be overwritten, where the string version can be altered with out re-writing its content
+# require_realtive: links two files that are in the same folder so they have can share code
+# require will need a realtive path because the files that are being linked may not be in "local" to eachother and it will need a navigation path to find them
+# some ways to iterate through a hash is to use  the bucket method that we share above
+# the varibales in virus_effects orginally had the instance variables being called in the code while the method didn't take in any paremeters, while the code contianed methods that used the instance varibales in the code lines so it was unnecesary to call the variables twice.
+# we spent a really long time on refactor and variable scope and that is what this challenge helped me understand better.
