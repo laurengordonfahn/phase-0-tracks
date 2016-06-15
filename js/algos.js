@@ -33,7 +33,7 @@ function longest_string(array_of_strings){
 	
 	var length = 0
 
-	var winner_length;
+	var winner_length; 0
 	
 
 	for(var i = 0; i < array_of_strings.length; i++){
@@ -47,6 +47,47 @@ function longest_string(array_of_strings){
 }
 
 longest_string(["long phrase", "longest phrase", "longer phrase"])
+
+
+//Release 1
+// create two var objects
+// create a fucntion takes these two objects and checks to see if they share at least 1 key:value pair
+
+for each object take all the keys and put them in an array then compare them then same for values.
+var key;
+var value;
+var 'object 1' = {key: value}
+var 'object 2' = {key: value}
+function key_call_object1('object 1'){
+		for ( (var key in 'object 1'){
+			key_array_1 = [key]
+		}
+}
+function key_call_object2('object 2') {
+		for ( (var key in 'object 2'){
+			key_array_2 = [key]
+		}
+}
+function value_call_object1('object 1'){
+	for (var value in 'object 1') {
+		console.log('object 1'[value])
+	}
+}
+function value_call_object2('object 2'){
+	for (var value in 'object 2') {
+		console.log('object 2'[value])
+	}
+}
+
+value_call_object1('object 1')
+value_call_objectt2('object 2')
+
+for(var i = 0; i < 'object 2'.length; i++){
+		if('object 1'[0] ==  'object 2'[i]){
+			console.log(true)}***** help
+
+		
+
 
 //Release 2
 function take an integer 
