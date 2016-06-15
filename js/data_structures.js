@@ -44,5 +44,33 @@ for (var i = 0; i < horse_name.length; i++) {
 
 console.log(horse);
 
+//Release 3
+//function that creates a vehicle
+// with various data types for a few different properties
+
+function Auto(make, model, year, domestic){
+  console.log("Automobile:", this);
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.domestic = domestic;
+  
+  this.recall = function(){
+     if(make == 'Toyota' && model == "Camry"){
+        console.log("Recall on " + make + model);
+     }else{
+       console.log("Your may be good go!")
+     }
+      
+  }
+}
+
+// var new_car = new Auto("Toyota", "Highlander", 1999, false);
+var new_car = new Auto("Toyota", "Camry", 1999, false);
+
+console.log(new_car);
+new_car.recall();
+
+
 
 
