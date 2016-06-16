@@ -53,38 +53,44 @@ longest_string(["long phrase", "longest phrase", "longer phrase"])
 // create two var objects
 // create a fucntion takes these two objects and checks to see if they share at least 1 key:value pair
 
-for each object take all the keys and put them in an array then compare them then same for values.
+// for each object take all the keys and put them in an array then compare them then same for values.
 var key;
 var value;
-var 'object 1' = {key: value}
-var 'object 2' = {key: value}
-function key_call_object1('object 1'){
-		for ( (var key in 'object 1'){
-			key_array_1 = [key]
+var object1 = {};
+var object2 = {};
+var array_key1 = [];
+var array_key2 = [];
+var array_value1 = [];
+var array_value2 = [];
+
+	
+function key_call_object1(object1){
+		for (key in object1){
+			array_key1.push(key);
 		}
 }
-function key_call_object2('object 2') {
-		for ( (var key in 'object 2'){
-			key_array_2 = [key]
+function key_call_object2(object2) {
+		for (key in object2){
+			array_key2.push(key);
 		}
 }
-function value_call_object1('object 1'){
-	for (var value in 'object 1') {
-		console.log('object 1'[value])
+function value_call_object1(object1){
+	for (key in object1) {
+		array_value1.push((object1[key]));
 	}
 }
-function value_call_object2('object 2'){
-	for (var value in 'object 2') {
-		console.log('object 2'[value])
+function value_call_object2(object2){
+	for (key in object2) {
+		array_value2.push((object2[key]));
 	}
 }
 
-value_call_object1('object 1')
-value_call_objectt2('object 2')
+// value_call_object1('object 1')
+// value_call_objectt2('object 2')
 
-for(var i = 0; i < 'object 2'.length; i++){
-		if('object 1'[0] ==  'object 2'[i]){
-			console.log(true)}***** help
+// for(var i = 0; i < 'object 2'.length; i++){
+// 		if('object 1'[0] ==  'object 2'[i]){
+// 			console.log(true)}***** help
 
 		
 
