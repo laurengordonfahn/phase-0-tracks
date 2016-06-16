@@ -62,43 +62,118 @@ var array_key1 = [];
 var array_key2 = [];
 var array_value1 = [];
 var array_value2 = [];
-
-	
+var array1_index = [];
+var array2_index = []
+  
 function key_call_object1(object1){
-		for (key in object1){
-			array_key1.push(key);
-		}
+  for (key in object1){
+    array_key1.push(key);
+  }
+  return array_key1
 }
 function key_call_object2(object2) {
-		for (key in object2){
-			array_key2.push(key);
-		}
+  for (key in object2){
+    array_key2.push(key);
+  }
+  return array_key2
 }
 function value_call_object1(object1){
-	for (key in object1) {
-		array_value1.push((object1[key]));
-	}
+  for (key in object1) {
+    array_value1.push((object1[key]));
+  }
+  return array_value1
 }
 function value_call_object2(object2){
-	for (key in object2) {
-		array_value2.push((object2[key]));
-	}
+  for (key in object2) {
+    array_value2.push((object2[key]));
+  }
+  return array_value2
 }
 
-// value_call_object1('object 1')
-// value_call_objectt2('object 2')
 
-// for(var i = 0; i < 'object 2'.length; i++){
-// 		if('object 1'[0] ==  'object 2'[i]){
-// 			console.log(true)}***** help
+/*
+function comparekeys(array_key1){
+  for(var i = 0; i < array_key1.length; i++){ 
+
+    n = array_key2.length
+    for(var )
+    if array_key1[i] == array_key2[0]
+      array1_index.push(i)
+      array2_index.push(n)
+
+      
+
+
+  }
+
+}
+*/
+
+
+/* step 1: loop over key and value of one object */
+function print_object(object) {
+  for(var key in object) {
+    var value = object[key];
+    console.log(key + " = " + value);
+  }
+}
+
+/* step 2: loop over another object for eacy key in the first loop */
+
+
+function print_objects(first, second) {
+  for(var key in first) {
+    var value = first[key];
+    
+    for(var key2 in second) {
+      var value2 = second[key2];
+
+      
+      console.log(key + " = " + value + " and " + key2 + " = " + value2);
+      
+      if(key == key2 && value == value2){
+        return true
+      }
+    }
+  }
+    return console.log(false);
+}
+
+
+
+var obj1 = {
+  a: "adam",
+  b: "bob"
+}
+
+var obj2 = {
+  c: "caroll",
+  d: "david"
+}
+
+
+print_objects(obj1,obj2);
 
 		
 
 
 //Release 2
-function take an integer 
-to create an array of strings where length of the array = integer
+// function take an integer 
+// to create an array of strings where length of the array = integer
+// The below works and I am saving it incase I mess it up ;)!
+// function array_gen(integer){
+// 	var array = [];
+// 	var string = "";
+// 	for(var i = 0; i <= integer; i++){
+// 		array.push(string);
+// 	}
+// 	return array;
+// }
 
-function to generator random strings (from 1 to 10 letters) to put into the array above
+function
+
+console.log(array_gen(3));
+
+// function to generator random strings (from 1 to 10 letters) to put into the array above
 
 
