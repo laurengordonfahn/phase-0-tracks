@@ -170,7 +170,28 @@ print_objects(obj1,obj2);
 // 	return array;
 // }
 
-function
+
+// console.log(array_gen(3));
+
+
+function string_gen(){
+  var string = "";
+  var num = Math.floor((Math.random() * 10) + 1);
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  for(var i = 0; i <= num; i++){
+     string += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+   return string;
+  
+}
+function array_gen(integer){
+  var array = [];
+  for(var i = 0; i < integer; i++){
+    var string = string_gen()
+    array.push(string);
+  }
+  return array;
+}
 
 console.log(array_gen(3));
 
