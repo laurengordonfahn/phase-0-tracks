@@ -52,43 +52,43 @@ longest_string(["long phrase", "longest phrase", "longer phrase"])
 //Release 1
 // create two var objects
 // create a fucntion takes these two objects and checks to see if they share at least 1 key:value pair
-
+// The noted out below was me trying to do something I didn't understand and was very complicated
 // for each object take all the keys and put them in an array then compare them then same for values.
-var key;
-var value;
-var object1 = {};
-var object2 = {};
-var array_key1 = [];
-var array_key2 = [];
-var array_value1 = [];
-var array_value2 = [];
-var array1_index = [];
-var array2_index = []
+// var key;
+// var value;
+// var object1 = {};
+// var object2 = {};
+// var array_key1 = [];
+// var array_key2 = [];
+// var array_value1 = [];
+// var array_value2 = [];
+// var array1_index = [];
+// var array2_index = []
   
-function key_call_object1(object1){
-  for (key in object1){
-    array_key1.push(key);
-  }
-  return array_key1
-}
-function key_call_object2(object2) {
-  for (key in object2){
-    array_key2.push(key);
-  }
-  return array_key2
-}
-function value_call_object1(object1){
-  for (key in object1) {
-    array_value1.push((object1[key]));
-  }
-  return array_value1
-}
-function value_call_object2(object2){
-  for (key in object2) {
-    array_value2.push((object2[key]));
-  }
-  return array_value2
-}
+// function key_call_object1(object1){
+//   for (key in object1){
+//     array_key1.push(key);
+//   }
+//   return array_key1
+// }
+// function key_call_object2(object2) {
+//   for (key in object2){
+//     array_key2.push(key);
+//   }
+//   return array_key2
+// }
+// function value_call_object1(object1){
+//   for (key in object1) {
+//     array_value1.push((object1[key]));
+//   }
+//   return array_value1
+// }
+// function value_call_object2(object2){
+//   for (key in object2) {
+//     array_value2.push((object2[key]));
+//   }
+//   return array_value2
+// }
 
 
 /*
@@ -101,7 +101,25 @@ function comparekeys(array_key1){
       array1_index.push(i)
       array2_index.push(n)
 
+      // just so I know you can nest for loops part of release 3 code here is an example but it is not fully functional
+      function array_gen(integer){
+  var array = [];
+  for(var i = 0; i < integer; i++){
+    var string = "";
+    var num = Math.floor((Math.random() * 10) + 1);
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    
+    for(var j = 0; j <= num; j++){
+      string += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return string;
+      array.push(string);
+  }
+  return array;
+}
       
+
+console.log(array_gen(3))
 
 
   }
@@ -193,7 +211,22 @@ function array_gen(integer){
   return array;
 }
 
-console.log(array_gen(3));
+
+// driver code for relase 3.2
+for(var i = 1; i <= 10; i++){
+  var ran_num = Math.floor((Math.random() * 10) + 1);
+  console.log("this is the ran_num " + ran_num);
+  console.log("this is the driver array...")
+  var driver_array = (array_gen(ran_num));
+  console.log(driver_array);
+  console.log("this is the longest string...")
+  longest_string(driver_array);
+  
+
+}
+
+
+
 
 // function to generator random strings (from 1 to 10 letters) to put into the array above
 
