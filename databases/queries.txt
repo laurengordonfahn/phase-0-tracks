@@ -104,4 +104,10 @@ Toyota
 Toyota
 VW
 VW
+
+sqlite> SELECT id, make, model, year, rented FROM cars_for_rent JOIN car_location ON cars_for_rent.location_id = car_location.id;
+Error: ambiguous column name: id
+sqlite> SELECT id, make, model, year, rented FROM cars_for_rent JOIN car_location ON cars_for_rent.location_id = car_location.location;
+Error: ambiguous column name: id
+sqlite>
 sqlite>
