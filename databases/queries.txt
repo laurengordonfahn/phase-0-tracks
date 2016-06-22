@@ -87,3 +87,21 @@ sqlite> SELECT * FROM cars_for_rent;
 9|VW|Passate|2014|true|1
 sqlite>
 
+
+6) JOINS
+sqlite> SELECT cars_for_rent.id, cars_for_rent.make, cars_for_rent.model, cars_for_rent.year, cars_for_rent.rented, car_location.location FROM cars_for_rent FULL OUTER JOIN car_location ON cars_for_rent.location_id=car_location.id ORDER BY cars_for_rent.id;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
+sqlite>
+
+sqlite> SELECT cars_for_rent.id, cars_for_rent.make, cars_for_rent.model, cars_for_rent.year, cars_for_rent.rented, car_location.location FROM cars_for_rent FULL OUTER JOIN car_location ON cars_for_rent.location_id=car_location.id ORDER BY cars_for_rent.id;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
+sqlite> SELECT make FROM cars_for_rent LEFT JOIN car_location ON cars_for_rent.make=car_location.location;
+Lexus
+Lexus
+Porsche
+Porsche
+Toyota
+Toyota
+VW
+VW
+sqlite>
