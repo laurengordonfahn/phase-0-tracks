@@ -89,6 +89,52 @@ sqlite>
 
 
 6) JOINS
+
+sqlite> SELECT cars_for_rent.id AS rental_id,
+   ...> cars_for_rent.make AS rental_make,
+   ...> cars_for_rent.model AS rental_model,
+   ...> cars_for_rent.year AS rental_year,
+   ...> car_location.location AS car_location
+   ...> FROM
+   ...> cars_for_rent
+   ...> LEFT JOIN car_location ON cars_for_rent.location_id = car_location.id;
+1|Lexus|GS|2016|Petaluma, CA
+2|Lexus|GS|2016|San Francisco, CA
+4|Porsche|911|1990|Petaluma, CA
+5|Porsche|911|1967|Boston, MA
+6|Toyota|Highlander|2015|Watertown, MA
+7|Toyota|Highlander|2015|Watertown, MA
+8|VW|Passat|2012|Boston, MA
+9|VW|Passate|2014|Petaluma, CA
+sqlite>
+
+
+sqlite> SELECT car_location.id,
+   ...> cars_for_rent.make
+   ...> FROM car_location
+   ...> INNER JOIN cars_for_rent
+   ...> ON car_location.id = cars_for_rent.location_id;
+1|Lexus
+2|Lexus
+1|Porsche
+3|Porsche
+4|Toyota
+4|Toyota
+3|VW
+1|VW
+sqlite>
+
+sqlite> SELECT cars_for_rent.id AS rental_id
+   ...> FROM cars_for_rent
+   ...> LEFT JOIN car_location
+   ...> ON cars_for_rent.location_id = car_location.id
+   ...>    WHERE car_location.location IS NULL;
+sqlite>
+
+NOTE nothing prints in this last one because there are not nulls! 
+
+
+THE ONES BELOW ARE FAILURES BUT I INCULDED THEM FOR MY OWN LEARNING!
 sqlite> SELECT cars_for_rent.id, cars_for_rent.make, cars_for_rent.model, cars_for_rent.year, cars_for_rent.rented, car_location.location FROM cars_for_rent FULL OUTER JOIN car_location ON cars_for_rent.location_id=car_location.id ORDER BY cars_for_rent.id;
 Error: RIGHT and FULL OUTER JOINs are not currently supported
 sqlite>
@@ -111,3 +157,21 @@ sqlite> SELECT id, make, model, year, rented FROM cars_for_rent JOIN car_locatio
 Error: ambiguous column name: id
 sqlite>
 sqlite>
+
+SELECT car_location.id,
+ cars_for_rent.make
+ FROM car_location
+ INNER JOIN cars_for_rent
+ON car_location.id = cars_for_rent.location_id;
+
+
+SELECT cars_for_rent.id AS rental_id,
+   cars_for_rent.make AS rental_make,
+    cars_for_rent.model AS rental_model,
+   cars_for_rent.year AS rental_year,
+   car_location.location AS car_location
+   FROM
+    cars_for_rent
+   LEFT JOIN car_location 
+   ON cars_for_rent.location_id = car_location.id
+   WHERE car_location.location IS NULL;
