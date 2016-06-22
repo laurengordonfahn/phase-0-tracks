@@ -1,0 +1,89 @@
+Release 2
+1) 
+
+Display all informtin from one table
+ sqlite3 solo_project.db
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+sqlite> SELECT * FROM cars_for_rent;
+1|Lexus|GS|2016|true|1
+2|Lexus|GS|2016|false|2
+3|Porsche|911|1989|true|1
+4|Porsche|911|1990|false|1
+5|Porsche|911|1967|true|3
+6|Toyota|Highlander|2015|true|4
+7|Toyota|Highlander|2015|true|4
+8|VW|Passat|2012|true|3
+9|VW|Passate|2014|true|1
+sqlite>
+
+
+2) Update item that meets a certain condition
+
+sqlite> SELECT * FROM cars_for_rent WHERE rented=
+   ...> "false"
+   ...> ;
+2|Lexus|GS|2016|false|2
+sqlite> UPDATE cars_for_rent SET rented="true" WHERE id=2;
+sqlite> SELECT id=2 FROM cars_for_rent;
+0
+1
+0
+0
+0        (this command was wrong!)
+0
+0
+0
+0
+sqlite> SELECT * FROM cars_for_rent WHERE id=2;
+2|Lexus|GS|2016|true|2
+sqlite>
+4|Porsche|911|1990|false|1
+sqlite>
+sqlite> SELECT * FROM cars_for_rent WHERE id=2;
+2|Lexus|GS|2016|true|2
+
+
+3) JOIN display both tables together
+
+sqlite> SELECT * FROM cars_for_rent, car_location WHERE cars_for_rent.location_id = car_location.id;
+1|Lexus|GS|2016|true|1|1|Petaluma, CA
+2|Lexus|GS|2016|true|2|2|San Francisco, CA
+3|Porsche|911|1989|true|1|1|Petaluma, CA
+4|Porsche|911|1990|false|1|1|Petaluma, CA
+5|Porsche|911|1967|true|3|3|Boston, MA
+6|Toyota|Highlander|2015|true|4|4|Watertown, MA
+7|Toyota|Highlander|2015|true|4|4|Watertown, MA
+8|VW|Passat|2012|true|3|3|Boston, MA
+9|VW|Passate|2014|true|1|1|Petaluma, CA
+sqlite>
+
+4) Display a narrower selection of columns for both table
+sqlite> SELECT models, location FROM cars_for_rent, car_location WHERE cars_for_rent.location_id = car_location.id;
+Error: no such column: models
+sqlite> SELECT make, location FROM cars_for_rent, car_location WHERE cars_for_rent.location_id = car_location.id;
+Lexus|Petaluma, CA
+Lexus|San Francisco, CA
+Porsche|Petaluma, CA
+Porsche|Petaluma, CA
+Porsche|Boston, MA
+Toyota|Watertown, MA
+Toyota|Watertown, MA
+VW|Boston, MA
+VW|Petaluma, CA
+sqlite>
+
+5) Delete an item that meets a conditon
+
+sqlite> DELETE FROM cars_for_rent WHERE year=1989;
+sqlite> SELECT * FROM cars_for_rent;
+1|Lexus|GS|2016|true|1
+2|Lexus|GS|2016|true|2
+4|Porsche|911|1990|false|1
+5|Porsche|911|1967|true|3
+6|Toyota|Highlander|2015|true|4
+7|Toyota|Highlander|2015|true|4
+8|VW|Passat|2012|true|3
+9|VW|Passate|2014|true|1
+sqlite>
+
