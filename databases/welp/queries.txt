@@ -1,0 +1,34 @@
+2.2)
+
+sqlite> SELECT * FROM businesses
+   ...> LEFT JOIN reviews ON businesses.id = reviews.business_id
+   ...> LEFT JOIN users ON reviews.user_id = users.id;
+1|Grundy Hollow Wedding Chapel|1|4|Comfortable atmosphere but limited selection|1|3|3|Angela|Jolie
+2|Amir's Towing|2|5|Good Food|2|2|2|Mandy|Kaling
+3|The Beagle Nightclub|3|3.5|Got my car towed, but no damage.|3|8|||
+4|Lotus Yoga||||||||
+5|Plumbing by Janet||||||||
+6|Sushi World||||||||
+7|JoeBob's Sportz Barn||||||||
+
+2.3)
+
+sqlite> SELECT users.firstname, users.lastname, businesses.name, reviews.stars,
+   ...> reviews.comment FROM businesses
+   ...> LEFT JOIN reviews ON businesses.id = reviews.business_id
+   ...> LEFT JOIN users ON reviews.user_id = users.id;
+Angela|Jolie|Grundy Hollow Wedding Chapel|4|Comfortable atmosphere but limited selection
+Mandy|Kaling|Amir's Towing|5|Good Food
+||The Beagle Nightclub|3.5|Got my car towed, but no damage.
+||Lotus Yoga||
+||Plumbing by Janet||
+||Sushi World||
+||JoeBob's Sportz Barn||
+
+
+2.4)
+sqlite> SELECT users.firstname, users.lastname, businesses.name, reviews.stars, reviews.comment FROM businesses
+   ...> LEFT JOIN reviews ON businesses.id = reviews.business_id
+   ...> LEFT JOIN users ON reviews.user_id = users.id
+   ...> WHERE businesses.name = "Grundy Hollow Wedding Chapel";
+Angela|Jolie|Grundy Hollow Wedding Chapel|4|Comfortable atmosphere but limited selection
