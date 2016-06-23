@@ -46,10 +46,23 @@ create_table_toys = <<-SQL
 		)
 SQL
 
+attach_elves = <<-Connect
+	attach 'elves.db' as elves_data;
+Connect
+
+attach_children = <<-Connect
+	attach 'children.db' as children_data;
+Connect
+
+
 #create tables (if not already there)
 elves_data_base.execute(create_table_elves)
 children_data_base.execute(create_table_children)
 toys_data_base.execute(create_table_toys)
+
+#attach data bases to the toy for counting of toys
+toys_data_base.database(attach_elves)
+toys_data_base.database(attach_children)
 
 #add a test elf, child, toy
 # elves_data_base.execute("INSERT INTO elves (name, toy_type_id, number_toys) VALUES ('Micro', 3, 32)")
