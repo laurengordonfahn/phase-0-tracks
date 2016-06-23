@@ -46,6 +46,6 @@ children_data_base.execute(create_table_children)
 toys_data_base.execute(create_table_toys)
 
 #add a test elf, child, toy
-elves_data_base.execute("INSERT INTO elves (name, toy_type_id, number_toys) VALUES ("Micro", 3, 32)")
-children_data_base.executre("INSERT INTO children (name, naught_nice, toy_type_id) VALUES ("Laurain", "nice", 1)")
-toys_data_base.execute("INSERT INTO toys (toy_name, number_toys) VALUES ("Mega-Tron", 15)")
+elves_data_base.execute("INSERT INTO elves (name, toy_type_id, number_toys) VALUES ('Micro', 3, 32)")
+children_data_base.execute("INSERT INTO children (name, naught_nice, toy_type_id) VALUES ('Laurain', 'true', 1)")
+toys_data_base.execute("INSERT INTO toys (toy_name, number_toys) VALUES ('Mega-Tron', 15)")
