@@ -16,5 +16,6 @@ INSERT INTO reviews(stars, comment, business_id, user_id) VALUES (4, "Comfortabl
 
 
 SELECT * FROM businesses 
-LEFT JOIN reviews ON businesses.id = reviews.bussiness_id
-LEFT JOIN users ON reviews.users_id = users.id
+LEFT JOIN reviews ON businesses.id = reviews.business_id
+LEFT JOIN users ON reviews.user_id = users.id
+
