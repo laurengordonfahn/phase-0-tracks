@@ -24,3 +24,11 @@ Mandy|Kaling|Amir's Towing|5|Good Food
 ||Plumbing by Janet||
 ||Sushi World||
 ||JoeBob's Sportz Barn||
+
+
+2.4)
+sqlite> SELECT users.firstname, users.lastname, businesses.name, reviews.stars, reviews.comment FROM businesses
+   ...> LEFT JOIN reviews ON businesses.id = reviews.business_id
+   ...> LEFT JOIN users ON reviews.user_id = users.id
+   ...> WHERE businesses.name = "Grundy Hollow Wedding Chapel";
+Angela|Jolie|Grundy Hollow Wedding Chapel|4|Comfortable atmosphere but limited selection
