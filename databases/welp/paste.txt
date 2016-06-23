@@ -1,0 +1,13 @@
+CREATE TABLE businesses(id INTEGER PRIMARY KEY, name VARCHAR(255));
+
+INSERT INTO businesses (name) VALUES ("Grundy Hollow Wedding Chapel"), ("Amir's Towing"), ("The Beagle Nightclub"), ("Lotus Yoga"), ("Plumbing by Janet"), ("Sushi World"), ("JoeBob's Sportz Barn");
+
+CREATE TABLE users(id INTEGER PRIMARY KEY, firstname VARCHAR(255), lastname VARCHAR(255));
+
+INSERT INTO users (firstname, lastname) VALUES ("Bradford", "Pitt"), ("Mandy", "Kaling"), ("Angela", "Jolie"), ("Steven", "Wonder"), ("Holly", "Berry"), ("Meryl", "Streepman"), ("Denzel", "George");
+
+CREATE TABLE businesses_users(business_id INT, user_id INT);
+
+DROP TABLE businesses_users;
+
+CREATE TABLE reviews(id INTEGER PRIMARY KEY, stars INT, comment VARCHAR(255), business_id INT, user_id INT, FOREIGN KEY(business_id) REFERENCES businesses(id), FOREIGN KEY(user_id) REFERENCES users(id));
