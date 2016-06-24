@@ -60,9 +60,11 @@ elves_data_base.execute(create_table_elves)
 children_data_base.execute(create_table_children)
 toys_data_base.execute(create_table_toys)
 
+
 #attach data bases to the toy for counting of toys
-toys_data_base.database(attach_elves)
-toys_data_base.database(attach_children)
+toys_data_base.execute(attach_elves)
+toys_data_base.execute(attach_children)
+
 
 #add a test elf, child, toy
 # elves_data_base.execute("INSERT INTO elves (name, toy_type_id, number_toys) VALUES ('Micro', 3, 32)")
@@ -95,8 +97,9 @@ def create_elf(elves_data_base, name, toy_type_id, number_toys)
 		[name, toy_type_id, number_toys])
 end
 
+
 100.times do 
-	create_elf(elves_data_base, Faker::Name.name, Faker::Number.between(1, 52) Faker::Number.between(1, 200))
+	create_elf(elves_data_base, Faker::Name.name, Faker::Number.between(1, 52), Faker::Number.between(1, 200))
 end
 
 
@@ -109,9 +112,9 @@ end
 	create_child(children_data_base, Faker::Name.name, Faker::Boolean.boolean, null)
 end
 
-create_child.each do |child|
-	if naught_nice
-		 UPDATE child SET Faker::Superhero WHERE toy_type_id=null 
+child_data_base.each do |child|
+	if child['naught_nice']
+		 UPDATE child SET Faker::Superhero.name WHERE toy_type_id=null 
 	end
 
 end
@@ -124,7 +127,7 @@ end
 
 toys_type = toys_data_base.execute("SELECT id FROM toys")
 	toys_type.each do |toy_id|
-		SELECT elves.toy_type_id, elves.number_toys FROM elves
+		SELECT elves.toy_type_id, elves.number_toys FROM elves 
 		WHERE toys.id = elves.toy_type_id;
 		SELECT SUM(number_toys) as toys_count FROM toys_type;
 	end
@@ -144,4 +147,5 @@ end
 	
 
 100.times do	
-	create_toy(toys_data_base, Faker::Superhero, final_toy_sum)
+	create_toy(toys_data_base, Faker::Superhero.name, final_toy_sum)
+end

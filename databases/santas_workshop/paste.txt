@@ -1,0 +1,43 @@
+
+
+
+
+#create select table just the type of toy and the numbers of that toy made
+
+
+	toys_type = toys_data_base.execute("SELECT id FROM toys")
+	toys_type.each do |toy_id|
+		SELECT elves.toy_type_id, elves.number_toys FROM elves
+		WHERE toys.id = elves.toy_type_id;
+	end
+
+
+#add the sum of each toy type made
+
+SELECT SUM(number_toys) as toys_count FROM toys_type;
+
+
+___________
+
+#create select table just the type of toy and the number of that toy alloted to a child
+
+child_toy_count = toys_data_base.execute ("SELECT id FROM toys")
+child_toy_count.each do |toy_id|
+	SELECT children.toy_type_id FROM children
+	WHERE toys.id = children.toy_type_id;
+end
+
+# add the sum of each toy type given to a child
+
+SELECT SUM(toy_type_id) as toys_for_children FROM child_toy_count;
+
+______________
+
+final_toy_sum = toys_data_base.execute("SELECT id FROM toys")
+final_toy_sum.each do |toy_id|
+	toys_count.to_i - toys_for_children.to_i
+end
+
+if naught_nice
+	 UPDATE child SET Faker::Superhero WHERE toy_type_id=null 
+end
