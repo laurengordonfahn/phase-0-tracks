@@ -35,7 +35,7 @@ create_table_toys = <<-SQL
 	CREATE TABLE IF NOT EXISTS toys(
 		id INTEGER PRIMARY KEY,
 		toy_name VARCHAR(255),
-		number_toys INT
+		number_total_toys INT
 		)
 SQL
 
@@ -51,7 +51,7 @@ data_base.execute(create_table_toys)
 #add a test elf, child, toy
 # data_base.execute("INSERT INTO elves (name, toy_type_id, number_toys) VALUES ('Micro', 3, 32)")
 # data_base.execute("INSERT INTO children (name, naught_nice, toy_type_id) VALUES ('Laurain', 'true', 1)")
-# data_base.execute("INSERT INTO toys (toy_name, number_toys) VALUES ('Mega-Tron', 15)")
+# data_base.execute("INSERT INTO toys (toy_name, number_total_toys) VALUES ('Mega-Tron', 15)")
 
 #explore ORM by retrieving database
 # elves = data_base.execute("SELECT * FROM elves")
@@ -125,9 +125,9 @@ child_toy = data_base.execute("SELECT naught_nice FROM children")
 
 
 
-def create_toy(data_base, toy_name, number_toys) 
-	data_base.execute("INSERT INTO toys (toy_name, number_toys) VALUES (?, ?)",
-		[toy_name, number_toys])
+def create_toy(data_base, toy_name, number_total_toys) 
+	data_base.execute("INSERT INTO toys (toy_name, number_total_toys) VALUES (?, ?)",
+		[toy_name, number_total_toys])
 end
 
 p data_base.execute("SELECT * FROM toys")
@@ -137,7 +137,7 @@ p data_base.execute("SELECT * FROM toys")
 	toys_type = data_base.execute("SELECT id FROM toys")
 
 	toys_type.each do |toy_id|
-		data_base.execute("SELECT SUM(number_toys) AS toys_count FROM elves WHERE toy_type_id = ?")
+		data_base.execute("SELECT SUM(number_total_toys) AS toys_count FROM elves WHERE toy_type_id = ?")
 	end
 
 	child_toy_type = data_base.execute ("SELECT id FROM toys")
@@ -145,7 +145,7 @@ p data_base.execute("SELECT * FROM toys")
 	child_toy_type.each do |toy_id|
 		data_base.execute("SELECT SUM(toy_type_id) AS child_toy_count FROM children WHERE toy_type_id = ?")
 	end
-	
+
 =begin
 
 	#get rid of this second half of above
@@ -173,7 +173,7 @@ end
 
 
 100.times do	
-	create_toy(toys_data_base, Faker::Superhero.name, final_toy_sum)
+	create_toy(data_base, Faker::Superhero.name, final_toy_sum)
 end
 
 
