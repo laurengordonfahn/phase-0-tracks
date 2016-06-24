@@ -115,8 +115,8 @@ def create_toy(toys_data_base, toy_name, number_toys)
 		[toy_name, number_toys])
 end
 
-def toy_counter(elves_data_base, elves_data_base[toy_type_id, number_toys], children_data_base, children_data_base[toy_type_id])
-	if evles_data_base[toy_type_id] =
+def toy_counter(elves_data_base, toy_type_id, number_toys)
+	
 
 100.times do	
 	create_toy(toys_data_base, Faker::Superhero, )
