@@ -108,13 +108,15 @@ end
 
 # #create tables (if not already there)
 # data_base.execute(create_table_elves)
-
-child_toy = data_base.execute("SELECT naught_nice FROM children")
-	child_toy.each do |naught_nice|
-		if naught_nice
+def assign_toy_child
+	child_toy = data_base.execute("SELECT naught_nice FROM children")
+	child_toy.each do
+# ADAME SAYS THIS IS RUBY CODE BUT I DON"T SEE HOW THAT IS POSSIBLE? 
+		if chilren['naught_nice']
 	 		data_base.execute("UPDATE child SET Faker::Superhero.name WHERE toy_type_id=nil")
 		end
 	end
+end 
 
 #elves = data_base.execute("SELECT * FROM elves")
 # 	elves.each do |elf|
@@ -123,28 +125,54 @@ child_toy = data_base.execute("SELECT naught_nice FROM children")
 
 #end
 
+#SINCE I AM WORKING ON HASHES DO I HAVE TO WRITE THESE SO THEY CHANGE HASHES?
 
+# def create_toy(data_base, toy_name, number_total_toys) 
+# 	data_base.execute("INSERT INTO toys (toy_name, number_total_toys) VALUES (?, ?)",
+# 		[toy_name, number_total_toys])
+# end
 
+# p data_base.execute("SELECT * FROM toys")
+
+# def toys_generated_sum
+# 	toys_type = data_base.execute("SELECT id FROM toys")
+
+# 	toys_type.each do 
+# 		data_base.execute("SELECT SUM(number_total_toys) AS toys_count FROM elves WHERE toy_type_id = ?")
+# 	end
+# end
+
+# def sum_toys_given_away
+# 	child_toy_type = data_base.execute ("SELECT id FROM toys")
+
+# 	child_toy_type.each do 
+# 		data_base.execute("SELECT SUM(toy_type_id) AS child_toy_count FROM children WHERE toy_type_id = ?")
+# 	end
+# end
+
+# written for hashes
 def create_toy(data_base, toy_name, number_total_toys) 
 	data_base.execute("INSERT INTO toys (toy_name, number_total_toys) VALUES (?, ?)",
 		[toy_name, number_total_toys])
 end
 
-p data_base.execute("SELECT * FROM toys")
 
 
-
+def toys_generated_sum
 	toys_type = data_base.execute("SELECT id FROM toys")
 
-	toys_type.each do |toy_id|
+	toys_type.each do 
 		data_base.execute("SELECT SUM(number_total_toys) AS toys_count FROM elves WHERE toy_type_id = ?")
 	end
+end
 
+def sum_toys_given_away
 	child_toy_type = data_base.execute ("SELECT id FROM toys")
 
-	child_toy_type.each do |toy_id|
+	child_toy_type.each do 
 		data_base.execute("SELECT SUM(toy_type_id) AS child_toy_count FROM children WHERE toy_type_id = ?")
 	end
+end
 
 =begin
 
@@ -171,9 +199,11 @@ final_toy_sum.each do |toy_id|
 	toys_count.to_i - child_toy_count.to_i
 end
 
+#creating a 52 different types of toys which will feed the types of toys the elves can make 
+#and the types of toys the children can recived. 
 
-100.times do	
-	create_toy(data_base, Faker::Superhero.name, final_toy_sum)
+def toy_generator	
+	52.create_toy(data_base, Faker::Superhero.name, final_toy_sum)
 end
 
 
