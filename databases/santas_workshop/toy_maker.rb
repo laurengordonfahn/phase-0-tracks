@@ -7,44 +7,51 @@ require 'sqlite3'
 require 'faker'
 
 #create SQLITE3 database
-data_base = SQLite3::Database.new("santas_data_base.db")
-data_base.results_as_hash = true
+def open_database
+	data_base = SQLite3::Database.new("santas_data_base.db")
+	data_base.results_as_hash = true
+	return data_base
+end
 
-#delimiter
-create_table_elves = <<-SQL
-	CREATE TABLE IF NOT EXISTS elves(
-		id INTEGER PRIMARY KEY,
-		name VARCHAR(255),
-		toy_type_id INT,
-		number_toys INT,
-		FOREIGN KEY (toy_type_id) REFERENCES toys(id)
+
+#delimiter create tables (if not already there)
+
+def create_tables(data_base)
+	create_table_elves = <<-SQL
+		CREATE TABLE IF NOT EXISTS elves(
+			id INTEGER PRIMARY KEY,
+			name VARCHAR(255),
+			toy_type_id INT,
+			number_toys INT,
+			FOREIGN KEY (toy_type_id) REFERENCES toys(id)
 		)
-SQL
+	SQL
 
-create_table_children = <<-SQL
-	CREATE TABLE IF NOT EXISTS children(
-		id INTEGER PRIMARY KEY,
-		name VARCHAR(255),
-		naught_nice BOOLEAN,
-		toy_type_id INT,
-		FOREIGN KEY (toy_type_id) REFERENCES toys(id)
+
+	create_table_children = <<-SQL
+		CREATE TABLE IF NOT EXISTS children(
+			id INTEGER PRIMARY KEY,
+			name VARCHAR(255),
+			naught_nice BOOLEAN,
+			toy_type_id INT,
+			FOREIGN KEY (toy_type_id) REFERENCES toys(id)
 		)
-SQL
+	SQL
 
-create_table_toys = <<-SQL
-	CREATE TABLE IF NOT EXISTS toys(
-		id INTEGER PRIMARY KEY,
-		toy_name VARCHAR(255),
-		number_total_toys INT
+	create_table_toys = <<-SQL
+		CREATE TABLE IF NOT EXISTS toys(
+			id INTEGER PRIMARY KEY,
+			toy_name VARCHAR(255),
+			number_total_toys INT
 		)
-SQL
+	SQL
 
 
-
-#create tables (if not already there)
-data_base.execute(create_table_elves)
-data_base.execute(create_table_children)
-data_base.execute(create_table_toys)
+	#execute create tables (if not already there)
+	data_base.execute(create_table_elves)
+	data_base.execute(create_table_children)
+	data_base.execute(create_table_toys)
+end
 
 
 
@@ -74,136 +81,105 @@ data_base.execute(create_table_toys)
 
 
 # add lots of data 
-def create_elf(data_base, name, toy_type_id, number_toys)
-	data_base.execute("INSERT INTO elves (name, toy_type_id, number_toys) VALUES (?, ?, ?)", 
-		[name, toy_type_id, number_toys])
-end
 
-
-100.times do 
-	create_elf(data_base, Faker::Name.name, Faker::Number.between(1, 52), Faker::Number.between(1, 200))
-end
-
-
-def create_child(data_base, name, naught_nice, toy_type_id)
-	data_base.execute("INSERT INTO children (name, naught_nice, toy_type_id) VALUES (?, ?, ?)",
-		[name, naught_nice.to_s, toy_type_id])
-end 
-
-100.times do
-	create_child(data_base, Faker::Name.name, Faker::Boolean.boolean, nil)
-end
-
-
-# SAMPLE FOR MIRRORING
-# create_table_toys = <<-SQL
-# 	CREATE TABLE IF NOT EXISTS toys(
-# 		id INTEGER PRIMARY KEY,
-# 		toy_name VARCHAR(255),
-# 		number_toys INT
-# 		)
-# SQL
-
-
-
-# #create tables (if not already there)
-# data_base.execute(create_table_elves)
-def assign_toy_child
-	child_toy = data_base.execute("SELECT naught_nice FROM children")
-	child_toy.each do
-# ADAME SAYS THIS IS RUBY CODE BUT I DON"T SEE HOW THAT IS POSSIBLE? 
-		if chilren['naught_nice']
-	 		data_base.execute("UPDATE child SET Faker::Superhero.name WHERE toy_type_id=nil")
-		end
-	end
-end 
-
-#elves = data_base.execute("SELECT * FROM elves")
-# 	elves.each do |elf|
-# 		puts "#{elf['name']} made #{elf['number_toys']} #{elf['toy_type_id']}"
-# 	end
-
-#end
-
-#SINCE I AM WORKING ON HASHES DO I HAVE TO WRITE THESE SO THEY CHANGE HASHES?
-
-# def create_toy(data_base, toy_name, number_total_toys) 
-# 	data_base.execute("INSERT INTO toys (toy_name, number_total_toys) VALUES (?, ?)",
-# 		[toy_name, number_total_toys])
-# end
-
-# p data_base.execute("SELECT * FROM toys")
-
-# def toys_generated_sum
-# 	toys_type = data_base.execute("SELECT id FROM toys")
-
-# 	toys_type.each do 
-# 		data_base.execute("SELECT SUM(number_total_toys) AS toys_count FROM elves WHERE toy_type_id = ?")
-# 	end
-# end
-
-# def sum_toys_given_away
-# 	child_toy_type = data_base.execute ("SELECT id FROM toys")
-
-# 	child_toy_type.each do 
-# 		data_base.execute("SELECT SUM(toy_type_id) AS child_toy_count FROM children WHERE toy_type_id = ?")
-# 	end
-# end
-
-# written for hashes
+#Outline for populating databases
+#toys outline
 def create_toy(data_base, toy_name, number_total_toys) 
 	data_base.execute("INSERT INTO toys (toy_name, number_total_toys) VALUES (?, ?)",
 		[toy_name, number_total_toys])
 end
 
 
+#elves outline
+def create_elf(data_base, name, toy_type_id, number_toys)
+	data_base.execute("INSERT INTO elves (name, toy_type_id, number_toys) VALUES (?, ?, ?)", 
+		[name, toy_type_id, number_toys])
+end
 
-def toys_generated_sum
+#children outline
+def create_child(data_base, name, naught_nice, toy_type_id)
+	data_base.execute("INSERT INTO children (name, naught_nice, toy_type_id) VALUES (?, ?, ?)",
+		[name, naught_nice.to_s, toy_type_id])
+end 
+
+
+#populate the databases
+def insert_data(data_base)
+	#toys population creator only want 52 different types of toys set final sum toys to nil at first
+	def toy_generator	
+		52.times do
+			create_toy(data_base, Faker::Superhero.name, nil)
+		end
+	end
+
+	toys = data_base.execute("SELECT id FROM toys")
+
+	#elves population creator by taking a sampling of what the toys types are
+	100.times do 
+		random_toy_id = toys.sample
+		create_elf(data_base, Faker::Name.name, random_toy_id, Faker::Number.between(1, 200))
+	end
+
+	#children population creator
+	100.times do
+		create_child(data_base, Faker::Name.name, Faker::Boolean.boolean, nil)
+	end
+
+end
+
+
+def assign_toy_child
+	child_toy = data_base.execute("SELECT naught_nice FROM children")
+	child_toy.each do 
+		if chilren['naught_nice']
+	 		data_base.execute("UPDATE child SET Faker::Superhero.name WHERE toy_type_id=nil")
+		end
+	end
+end 
+
+# written for hashes
+def calculate_toy_inventory(data_base)
+
 	toys_type = data_base.execute("SELECT id FROM toys")
 
-	toys_type.each do 
-		data_base.execute("SELECT SUM(number_total_toys) AS toys_count FROM elves WHERE toy_type_id = ?")
-	end
+#for each toy find the remaining inventory after delivery
+	toys_type.each do |toy|
+		#find the number of toys that are produced by elves
+		produced = data_base.execute("SELECT SUM(number_total_toys) AS produced_toys FROM elves WHERE toy_type_id = ?, toy["id"]")
+		produced = produced [0]
+		
+		if produced.nil? 
+			produced = 0
+		else
+			produced = produced["produced_toys"]
+		end
+	# number of children who get a type of toy
+
+	count =  data_base.execute("SELECT COUNT(*) AS num_children FROM children WHERE toy_type_id = ?, toy["id"]")
+	count = count[0]
+	
+
+		if count.nil?
+			count = 0
+		else
+			count =count["num_children"]
+		end
+	remaining_toys = produced - count
+
+	#creat final inventory sum of toys
+		data_base.execute("UPDATE toys SET number_total_toys = ? WHERE id=?", remaining_toys, toy["id"])
+	end 
 end
 
-def sum_toys_given_away
-	child_toy_type = data_base.execute ("SELECT id FROM toys")
+def main_work
 
-	child_toy_type.each do 
-		data_base.execute("SELECT SUM(toy_type_id) AS child_toy_count FROM children WHERE toy_type_id = ?")
-	end
+	db = open_database
+	creat_table(db)
+	insert_data(db)
+	calculate_toy_inventory(db)
 end
 
-=begin
-
-	#get rid of this second half of above
-
-		children.toy_type_id FROM children
-		WHERE toys_id = children.toy_type_id;
-		SELECT SUM(toy_type_id) as toys_for_children FROM child_toy_count;")
-	end
 
 
-	#get rid of this
-		SELECT elves.toy_type_id, elves.number_toys
-		FROM elves, toys
-		WHERE toys.id = elves.toy_type_id
-		SELECT SUM(number_toys) as toys_count FROM toys_type;
-	end
-
-=end
-
-
-final_toy_sum = data_base.execute("SELECT id FROM toys")
-final_toy_sum.each do |toy_id|
-	toys_count.to_i - child_toy_count.to_i
-end
-
-#creating a 52 different types of toys which will feed the types of toys the elves can make 
-#and the types of toys the children can recived. 
-
-def toy_generator	
-	52.create_toy(data_base, Faker::Superhero.name, final_toy_sum)
-end
 
 
