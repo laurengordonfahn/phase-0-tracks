@@ -24,3 +24,7 @@
 Since Root is the frist user name granted it is easy for people to access since they know the name to look under. Changing it heightens secturity. 
 
 //* The above information is from [Why to change user name from root](http://www.howtogeek.com/124950/htg-explains-why-you-shouldnt-log-into-your-linux-system-as-root)*
+
+
+Since I don't know where to put this Release 2:
+Five elements that can be changed once a page is loaded: clear, float, line-height, overflow, position
